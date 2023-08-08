@@ -6,9 +6,9 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -20,7 +20,22 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-    
+
+    - name: Configure Amplify CLI
+      run: npm install -g @aws-amplify/cli
+
+    - name: Assume IAM Role
+      id: sts
+      run: |
+        ROLE_ARN="arn:aws:iam::894085200796:role/service-role/AmplifySSRLoggingRole-d2zavuz57t6j05"  # Replace with your IAM role ARN
+      
+
+    - name: Amplify Init
+      run: amplify init --app my-amplify-app --yes
+
+    - name: Amplify Pull
+      run: amplify pull --appId <your_amplify_app_id> --envName <your_amplify_env_name> --yes
+
     - name: Build and Deploy to Amplify
       run: npm run build  # Replace with your build command
 
