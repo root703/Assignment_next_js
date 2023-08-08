@@ -31,10 +31,10 @@ jobs:
       
 
     - name: Amplify Init
-      run: amplify init --app https://github.com/root703/Assignment_next_js.git --yes
+      run: amplify init
 
     - name: Amplify Pull
-      run: amplify pull --appId <your_amplify_app_id> --envName <your_amplify_env_name> --yes
+      run: amplify pull --appId d2lilztwk3650x --envName prod --yes
 
     - name: Build and Deploy to Amplify
       run: npm run build  # Replace with your build command
