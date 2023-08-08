@@ -34,7 +34,7 @@ jobs:
       run: amplify init
 
     - name: Amplify Pull
-      run: amplify pull --appId d2lilztwk3650x --envName prod --yes
+      run: amplify pull --appId d2lilztwk3650x 
 
     - name: Build and Deploy to Amplify
       run: npm run build  # Replace with your build command
