@@ -31,7 +31,7 @@ jobs:
       
 
     - name: Amplify Init
-      run: amplify init --app my-amplify-app --yes
+      run: amplify init --app https://github.com/root703/Assignment_next_js.git --yes
 
     - name: Amplify Pull
       run: amplify pull --appId <your_amplify_app_id> --envName <your_amplify_env_name> --yes
