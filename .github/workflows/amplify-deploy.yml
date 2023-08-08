@@ -1,0 +1,28 @@
+name: Amplify Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build and Deploy to Amplify
+      run: npm run build  # Replace with your build command
+
+    - name: Deploy to Amplify
+      run: amplify publish   # Replace with your Amplify deployment command
