@@ -20,7 +20,7 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-
+    
     - name: Build and Deploy to Amplify
       run: npm run build  # Replace with your build command
 
