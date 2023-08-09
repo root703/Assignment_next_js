@@ -20,8 +20,7 @@ jobs:
       with:
         node-version: '14'
 
-    - name: Install Dependencies
-      run: npm install
+  
 
  
 
@@ -32,6 +31,7 @@ jobs:
         BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      shell: /usr/bin/bash -e -x {0}
         
 
     
