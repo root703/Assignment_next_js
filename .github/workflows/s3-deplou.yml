@@ -13,12 +13,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Assume IAM Role
-      id: assume_role
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        role-to-assume: arn:aws:iam::894085200796:role/GitLabS3Access
-        aws-region: us-east-1  # Change to your desired region
+     # Change to your desired region
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
