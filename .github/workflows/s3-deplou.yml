@@ -17,7 +17,7 @@ jobs:
       id: assume_role
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        role-to-assume: arn:aws:iam::YOUR_ACCOUNT_ID:role/YourGitHubActionsRoleName
+        role-to-assume: arn:aws:iam::894085200796:role/GitLabS3Access
         aws-region: us-east-1  # Change to your desired region
 
     - name: Set up Node.js
@@ -36,11 +36,7 @@ jobs:
         aws s3 sync dist/ s3://$BUCKET_NAME
       env:
         BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
-        AWS_SECRET_ACCESS_KEY: ${{ steps.assume_role.outputs.AWS_SECRET_ACCESS_KEY }}
-        AWS_SESSION_TOKEN: ${{ steps.assume_role.outputs.AWS_SESSION_TOKEN }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_SESSION_TOKEN: ${{ secrets..AWS_SESSION_TOKEN }}
 
-    - name: Invalidate CloudFront Cache
-      run: |
-        aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
-      env:
-        CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+    
